@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +16,7 @@ function Home() {
 
   const fetchBooks = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/books");
+      const response = await fetch("https://onlinelibrary-production-4d24.up.railway.app/api/books");
       const data = await response.json();
       setBooks(data);
     } catch (error) {
@@ -47,7 +48,7 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/books", {
+      const response = await fetch("https://onlinelibrary-production-4d24.up.railway.app/api/books", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,7 +74,7 @@ function Home() {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/books/${id}`, {
+      const response = await fetch(`https://onlinelibrary-production-4d24.up.railway.app/api/books/${id}`, {
         method: "DELETE",
       });
 

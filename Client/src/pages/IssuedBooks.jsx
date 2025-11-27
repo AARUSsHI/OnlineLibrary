@@ -27,7 +27,7 @@ function IssuedBook() {
   // Fetch selected book
   const fetchBook = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/books/${id}`);
+      const res = await fetch(`https://onlinelibrary-production-4d24.up.railway.app/api/books/${id}`);
       if (!res.ok) throw new Error("Failed to fetch book");
       const data = await res.json();
       setBook(data);
@@ -39,7 +39,7 @@ function IssuedBook() {
   // Fetch users
   const fetchUsers = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/users");
+      const res = await fetch("https://onlinelibrary-production-4d24.up.railway.app/api/users");
       if (!res.ok) throw new Error("Failed to fetch users");
       const data = await res.json();
       setUsers(data);
@@ -51,7 +51,7 @@ function IssuedBook() {
   // Fetch users who issued this book
   const fetchIssuedBy = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/books/${id}/issuedBy`);
+      const res = await fetch(`https://onlinelibrary-production-4d24.up.railway.app/api/books/${id}/issuedBy`);
       if (!res.ok) throw new Error("Failed to fetch issued users");
       const data = await res.json();
       setIssuedUsers(data);
@@ -133,7 +133,7 @@ function IssuedBook() {
 
     // If user does NOT exist → create new user
     if (!user) {
-      const createUserRes = await fetch("http://localhost:5000/api/users", {
+      const createUserRes = await fetch("https://onlinelibrary-production-4d24.up.railway.app/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email }),
@@ -152,7 +152,7 @@ function IssuedBook() {
 
     // Issue the book
     const issueRes = await fetch(
-      `http://localhost:5000/api/books/issue/${id}/${user._id}`,
+      `https://onlinelibrary-production-4d24.up.railway.app/api/books/issue/${id}/${user._id}`,
       { method: "PUT" }
     );
 
@@ -194,7 +194,7 @@ function IssuedBook() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/books/return/${id}/${userId}`,
+        `https://onlinelibrary-production-4d24.up.railway.app/api/books/return/${id}/${userId}`,
         { method: "PUT" }
       );
 
